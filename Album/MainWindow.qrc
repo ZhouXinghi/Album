@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/MainWindow">
+        <file>icons/heart (1).png</file>
+        <file>icons/heart.png</file>
+        <file>icons/in-love.png</file>
+        <file>icons/love (1).png</file>
+        <file>icons/love.png</file>
+        <file>style/style.qss</file>
+    </qresource>
+</RCC>
