@@ -92,14 +92,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConfirmPage.cpp" />
+    <ClCompile Include="ProjSetPage.cpp" />
+    <ClCompile Include="ProjTree.cpp" />
+    <ClCompile Include="ProjTreeItem.cpp" />
+    <ClCompile Include="ProjTreeThread.cpp" />
+    <ClCompile Include="ProjTreeWidget.cpp" />
+    <ClCompile Include="RmProjDlg.cpp" />
     <QtRcc Include="MainWindow.qrc" />
+    <QtUic Include="ConfirmPage.ui" />
+    <QtUic Include="CreateProjWizard.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
+    <ClCompile Include="CreateProjWizard.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="ProjSetPage.ui" />
+    <QtUic Include="ProjTree.ui" />
+    <QtUic Include="RmProDlg.ui" />
   </ItemGroup>
   <ItemGroup>
     <None Include="style\style.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="CreateProjWizard.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ProjSetPage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ConfirmPage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="ProjTree.h" />
+    <ClInclude Include="ProjTreeItem.h" />
+    <ClInclude Include="RmProjDlg.h" />
+    <QtMoc Include="ProjTreeThread.h" />
+    <QtMoc Include="ProjTreeWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

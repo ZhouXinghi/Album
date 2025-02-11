@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateProjWizard</class>
+ <widget class="QWizard" name="CreateProjWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>774</width>
+    <height>566</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="ProjSetPage" name="projSetPage"/>
+  <widget class="ConfirmPage" name="confirmPage"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ProjSetPage</class>
+   <extends>QWizardPage</extends>
+   <header location="global">ProjSetPage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfirmPage</class>
+   <extends>QWizardPage</extends>
+   <header location="global">confirmpage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

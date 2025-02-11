@@ -40,8 +40,80 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CreateProjWizard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjSetPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfirmPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjTreeWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjTreeItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjTreeThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RmProjDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="style\style.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="CreateProjWizard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ProjSetPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ConfirmPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ProjTree.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="RmProDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="CreateProjWizard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ProjSetPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ConfirmPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ProjTreeThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ProjTreeWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProjTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjTreeItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RmProjDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

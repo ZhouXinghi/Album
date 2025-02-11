@@ -17,7 +17,8 @@ public:
 
 private:
     Ui::MainWindowClass *ui;
+    QWidget* _projTree;
 
 private slots:
-    void SlotCreateProj(bool checked) const;
+    void SlotCreateProj(bool checked);
 };
