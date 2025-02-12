@@ -64,9 +64,19 @@
     <ClCompile Include="RmProjDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OpenProjThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PicShow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PicButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="style\style.qss" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CreateProjWizard.ui">
@@ -82,6 +92,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="RmProDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PicShow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -101,6 +114,12 @@
     <QtMoc Include="ProjTreeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="OpenProjThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PicShow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProjTree.h">
@@ -113,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RmProjDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PicButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

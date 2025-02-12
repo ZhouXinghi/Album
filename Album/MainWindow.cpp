@@ -3,11 +3,14 @@
 #include <QAction>
 #include "CreateProjWizard.h"
 #include "ProjTree.h"
+#include <QFileDialog>
+#include "PicShow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindowClass())
     , _projTree(new ProjTree())
+    , _picShow(new PicShow())
 {
     ui->setupUi(this);
     // 文件菜单
@@ -30,17 +33,41 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 连接信号和槽
     connect(actCreateProj, &QAction::triggered, this, &MainWindow::SlotCreateProj);
-    //CreateProjWizard* wizard = new CreateProjWizard(this);
-    //wizard->show();
 
-    // 添加ProjTree
+    connect(actOpenProj, &QAction::triggered, this, &MainWindow::SlotOpenProj);
+    ProjTreeWidget* treeWidget = dynamic_cast<ProjTreeWidget*>(dynamic_cast<ProjTree*>(_projTree)->GetTreeWidget());
+    connect(this, &MainWindow::SigOpenProj, treeWidget, &ProjTreeWidget::SlotOpenProj);
+
+    // 添加widgets
     ui->proLayout->addWidget(_projTree);
+    ui->picLayout->addWidget(_picShow);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete _projTree;
+}
+
+void MainWindow::SlotOpenProj(bool checked)
+{
+    QFileDialog fileDlg;
+    fileDlg.setFileMode(QFileDialog::Directory);
+    fileDlg.setWindowTitle("选择打开的文件夹");
+    fileDlg.setDirectory(QDir::currentPath());
+    fileDlg.setViewMode(QFileDialog::Detail);
+    
+    QStringList fileNames;
+    if (fileDlg.exec()) {
+        fileNames = fileDlg.selectedFiles();
+    }
+    if (fileNames.isEmpty()) {
+        qDebug() << "cannot get selected files!";
+        return;
+    }
+    QString importPath = fileNames[0];
+    emit SigOpenProj(importPath);
 }
 
 void MainWindow::SlotCreateProj(bool checked)

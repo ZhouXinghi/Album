@@ -17,6 +17,8 @@ ProjTreeWidget::ProjTreeWidget(QWidget* parent)
     , _rightBtnItem(nullptr)
     , _activeItem(nullptr)
     , _progDlg(nullptr)
+    , _projTreeThread(nullptr)
+    , _openProjThread(nullptr)
 {
     header()->hide();
     connect(this, &ProjTreeWidget::itemPressed, this, &ProjTreeWidget::SlotItemPressed);
@@ -26,23 +28,23 @@ ProjTreeWidget::ProjTreeWidget(QWidget* parent)
     connect(_actCloseProj, &QAction::triggered, this, &ProjTreeWidget::SlotCloseProj);
 }
 
-void ProjTreeWidget::AddProjToTree(const QString& name, const QString& path)
+QTreeWidgetItem* ProjTreeWidget::AddProjToTree(const QString& name, const QString& path)
 {
     // 创建项目路径
     QDir dir(path);
     QString projPath = dir.absoluteFilePath(name);
     
     QDir projDir(projPath);
-    if (projDir.exists()) {
-        return;
+    if (!projDir.exists()) {
+        projDir.mkpath(projPath);
     }
 
-    projDir.mkpath(projPath);
     auto* item = new ProjTreeItem(this, name, projPath, TreeItemProj);
     item->setData(0, Qt::DisplayRole, name);
     item->setData(0, Qt::DecorationRole, QIcon(""));
     item->setData(0, Qt::ToolTipRole, projPath);
     addTopLevelItem(item);
+    return item;
 }
 
 void ProjTreeWidget::SlotImport()
@@ -71,7 +73,7 @@ void ProjTreeWidget::SlotImport()
     _progDlg = new QProgressDialog(this);
 
     int fileCount = 0;
-    _projTreeThread = std::make_shared<ProjTreeThread>(std::ref(importPath), path, _rightBtnItem, fileCount, this, _rightBtnItem, nullptr);
+    _projTreeThread = std::make_shared<ProjTreeThread>(std::ref(importPath), std::ref(path), _rightBtnItem, fileCount, this, _rightBtnItem, nullptr);
     connect(_projTreeThread.get(), &ProjTreeThread::SigUpdateProgress, this, &ProjTreeWidget::SlotUpdataProgress);
     connect(_projTreeThread.get(), &ProjTreeThread::SigFinishProgress, this, &ProjTreeWidget::SlotFinishProgress);
     connect(_progDlg, &QProgressDialog::canceled, this, &ProjTreeWidget::SlotCancelProgress);
@@ -134,11 +136,36 @@ void ProjTreeWidget::SlotCloseProj()
         QDir(dynamic_cast<ProjTreeItem*>(_rightBtnItem)->getPath()).removeRecursively();
     }
     if (_rightBtnItem == _activeItem) {
-        _activeItem == nullptr;
+        _activeItem = nullptr;
     }
 
     delete takeTopLevelItem(indexOfTopLevelItem(_rightBtnItem));
     _rightBtnItem = nullptr;
+}
+
+void ProjTreeWidget::SlotOpenProj(const QString& path)
+{
+    // TODO:判断是否已经打开，若已经打开则不再次打开
+    if (IsAlreadyOpen(path)) {
+        return;
+    }
+    QDir dir(path);
+    QString name = dir.dirName();
+    dir.cdUp();
+    QString parentPath = dir.absolutePath();
+    QTreeWidgetItem* rootItem = AddProjToTree(name, parentPath);
+
+    //QDir projDir(path);
+
+    int fileCount = 0;
+    _openProjThread = std::make_shared<OpenProjThread>(std::ref(path), fileCount, this, rootItem,  nullptr);
+    _openProjThread->start();
+
+}
+
+bool ProjTreeWidget::IsAlreadyOpen(const QString& path) const
+{
+    return false;
 }
 
 void ProjTreeWidget::SlotItemPressed(QTreeWidgetItem* item, int column)

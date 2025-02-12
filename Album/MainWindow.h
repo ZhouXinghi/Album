@@ -18,7 +18,12 @@ public:
 private:
     Ui::MainWindowClass *ui;
     QWidget* _projTree;
+    QWidget* _picShow;
 
 private slots:
     void SlotCreateProj(bool checked);
+    void SlotOpenProj(bool checked);
+
+signals:
+    void SigOpenProj(const QString& path);
 };

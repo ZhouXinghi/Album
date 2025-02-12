@@ -93,6 +93,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConfirmPage.cpp" />
+    <ClCompile Include="OpenProjThread.cpp" />
+    <ClCompile Include="PicButton.cpp" />
+    <ClCompile Include="PicShow.cpp" />
     <ClCompile Include="ProjSetPage.cpp" />
     <ClCompile Include="ProjTree.cpp" />
     <ClCompile Include="ProjTreeItem.cpp" />
@@ -107,11 +110,13 @@
     <ClCompile Include="CreateProjWizard.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="PicShow.ui" />
     <QtUic Include="ProjSetPage.ui" />
     <QtUic Include="ProjTree.ui" />
     <QtUic Include="RmProDlg.ui" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="style\style.qss" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <QtMoc Include="OpenProjThread.h" />
+    <QtMoc Include="PicShow.h" />
+    <ClInclude Include="PicButton.h" />
     <ClInclude Include="ProjTree.h" />
     <ClInclude Include="ProjTreeItem.h" />
     <ClInclude Include="RmProjDlg.h" />

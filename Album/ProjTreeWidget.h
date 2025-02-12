@@ -2,6 +2,7 @@
 #include <QTreeWidget>
 #include <QProgressDialog>
 #include "ProjTreeThread.h"
+#include "OpenProjThread.h"
 
 class ProjTreeWidget : public QTreeWidget
 {
@@ -9,7 +10,7 @@ class ProjTreeWidget : public QTreeWidget
 public:
     explicit ProjTreeWidget(QWidget* parent = nullptr);
 
-    void AddProjToTree(const QString& name, const QString& path);
+    QTreeWidgetItem* AddProjToTree(const QString& name, const QString& path);
 
 private:
     QAction* _actImport;
@@ -21,8 +22,11 @@ private:
     QProgressDialog* _progDlg;
 
     std::shared_ptr<ProjTreeThread> _projTreeThread;
+    std::shared_ptr<OpenProjThread> _openProjThread;
 
     QTreeWidgetItem* _activeItem;
+
+    bool IsAlreadyOpen(const QString& path) const;
 
 private slots:
     void SlotItemPressed(QTreeWidgetItem* item, int column);
@@ -32,6 +36,8 @@ private slots:
     void SlotCancelProgress();
     void SlotSetActive();
     void SlotCloseProj();
+public slots:
+    void SlotOpenProj(const QString& path);
 signals:
     void SigCancelProgress();
 };
